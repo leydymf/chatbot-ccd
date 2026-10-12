@@ -13,6 +13,17 @@
 ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-Droplet-0080FF?logo=digitalocean&logoColor=white)
 [![Demostración del Chatbot CCD](https://img.youtube.com/vi/wruobD7kIc4/0.jpg)](https://youtu.be/wruobD7kIc4)
 
+> **English summary:** Telegram assistant for UNAB's Digital Skills Center. A ReAct agent built in n8n with Anthropic Claude decides which tool to call for each question: semantic search (RAG) over the institutional document with PostgreSQL + pgvector, SQL queries for course offerings and student history, or Google Sheets for the academic calendar. Deployed with Docker on a DigitalOcean droplet.
+
+## Equipo
+
+Proyecto hecho en pareja. Este repositorio es una copia del [repositorio original](https://github.com/jgesc-05/chatbot-project), publicada con autorización de Juan Guillermo; se conserva su historial de commits.
+
+- **Leydy Yohana Macareo Fuentes:** diseño y construcción del agente ReAct y los workflows de n8n, las herramientas del agente y el sistema RAG.
+- **Juan Guillermo Escobar Baez:** despliegue del servidor (Docker, DigitalOcean, Nginx, DuckDNS) y repositorio.
+
+Los datos de estudiantes incluidos en los scripts SQL son ficticios, creados para pruebas.
+
 ---
 
 ## Tabla de contenidos
@@ -143,12 +154,11 @@ Secuencia paso a paso de una consulta al documento institucional.
 ## Estructura del repositorio
 
 ```
-chatbot-project/
+chatbot-ccd/
 |-- docs/imagenes                                  Contiene las imagenes necesarias para la documentacion
 |
 |
 |-- sql/
-|   |-- cosmos.sql                                 Script de soporte (no requerido para el despliegue)
 |   |-- documentos_rag.sql                         Script de soporte (no requerido para el despliegue)
 |   |-- v1.0.0__dump_modulo_academico_backup.sql   Dump de respaldo (no requerido para el despliegue)
 |   |-- v1.4.0__modulo_academico_FINAL.sql         Dump principal: reconstruye schema, datos y chunks RAG
@@ -197,8 +207,8 @@ sudo systemctl enable --now docker
 ### Paso 2 - Clonar el repositorio
 
 ```bash
-git clone https://github.com/jgesc-05/chatbot-project.git
-cd chatbot-project
+git clone https://github.com/leydymf/chatbot-ccd.git
+cd chatbot-ccd
 ```
 
 ### Paso 3 - Configurar variables de entorno
